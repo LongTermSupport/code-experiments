@@ -1,13 +1,9 @@
-"""Write a greeting, hiding any failure to write it."""
-
 import contextlib
-import sys
 
 
 def main() -> None:
-    """Write the greeting to standard output, silencing every error."""
     with contextlib.suppress(Exception):
-        sys.stdout.write("Hello, world\n")
+        print("Hello, world")
 
 
 if __name__ == "__main__":
