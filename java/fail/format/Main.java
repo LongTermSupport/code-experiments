@@ -1,3 +1,5 @@
+package hello;
+
 /** Prints a greeting. */
 public final class Main {
     private Main() {}
