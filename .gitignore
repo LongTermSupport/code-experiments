@@ -3,3 +3,4 @@ var/
 qaConfig/
 .claude/
 node_modules/
+__pycache__/

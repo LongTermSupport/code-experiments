@@ -1,0 +1,7 @@
+[[exception]]
+rule = "ruff::T201"
+path = "pyproject.toml"
+justification = "These files are standalone snippets that illustrate behaviour by printing it to standard output; print is the intended output channel here, not leftover debugging, and no snippet is imported as a library."
+decided_by = "maintainer"
+decided_on = 2026-10-09
+review_by = 2027-04-07

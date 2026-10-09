@@ -1,0 +1,45 @@
+# The project configuration every Python case shares: pass/ and each fail/<case>/ link to this
+# file and to qa/ beside it. The Ruff selection is python-qa's bundled one; the one difference is
+# that print is allowed, an exception recorded in qa/record.toml.
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    "E4",    # import placement
+    "E7",    # statements
+    "E9",    # syntax and io errors
+    "F",     # pyflakes: undefined names, unused imports and variables
+    "W605",  # invalid escape sequence
+    "I",     # import order
+    "A",     # shadowed builtins
+    "ARG",   # unused arguments
+    "ASYNC", # blocking calls in async code
+    "B",     # bugbear: likely bugs
+    "BLE",   # blind except
+    "C4",    # comprehensions
+    "DTZ",   # naive datetimes
+    "ERA",   # commented-out code
+    "EXE",   # executable flags and shebangs
+    "FURB",  # refurb
+    "G",     # logging format
+    "LOG",   # logging misuse
+    "N",     # naming
+    "PERF",  # performance pitfalls
+    "PGH",   # blanket suppressions
+    "PIE",   # unnecessary constructs
+    "PLE",   # pylint errors
+    "PLW",   # pylint warnings
+    "PT",    # pytest style that hides failures
+    "PTH",   # pathlib
+    "RET",   # return consistency
+    "RUF",   # ruff's own, including unused suppression comments
+    "S",     # security
+    "SIM",   # simplifications
+    "SLF",   # private member access
+    "T20",   # print and pprint left in; T201 is excepted below
+    "TID",   # banned imports
+    "TRY",   # exception handling
+    "UP",    # pyupgrade
+]
+ignore = ["T201"]
