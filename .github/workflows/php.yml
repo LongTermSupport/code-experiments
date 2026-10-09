@@ -1,0 +1,20 @@
+name: php
+
+on: [push, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          tools: composer:v2
+          extensions: mbstring, intl, dom, xml, xmlwriter, simplexml, tokenizer, pcntl, posix, openssl
+          coverage: none
+          ini-values: memory_limit=4G
+      - run: bash ci/run-language.bash php
