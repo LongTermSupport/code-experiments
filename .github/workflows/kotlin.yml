@@ -1,0 +1,31 @@
+name: kotlin
+
+on: [push, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Install pinned tools
+        run: |
+          set -euo pipefail
+          bin="$HOME/tools/bin"
+          mkdir -p "$bin"
+          curl -fsSL -o "$bin/ktlint" \
+            https://github.com/ktlint/ktlint/releases/download/1.8.0/ktlint
+          chmod +x "$bin/ktlint"
+          curl -fsSL -o "$HOME/tools/detekt.zip" \
+            https://github.com/detekt/detekt/releases/download/v1.23.8/detekt-cli-1.23.8.zip
+          unzip -q "$HOME/tools/detekt.zip" -d "$HOME/tools"
+          ln -s "$HOME/tools/detekt-cli-1.23.8/bin/detekt-cli" "$bin/detekt-cli"
+          echo "$bin" >> "$GITHUB_PATH"
+          kotlinc -version
+      - run: bash ci/run-language.bash kotlin
