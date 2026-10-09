@@ -10,9 +10,10 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '4.0'
-          bundler-cache: true
-          working-directory: ruby
+      - name: Install the pinned gems into the runner's preinstalled Ruby
+        working-directory: ruby
+        run: |
+          ruby --version
+          bundle config set --local path "$HOME/gems"
+          bundle install
       - run: bash ci/run-language.bash ruby
