@@ -1,0 +1,13 @@
+{
+  "name": "hello-ts",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@longtermsupport/ts-qa-ci": "git+https://github.com/LongTermSupport/ts-qa-ci.git#1f61b303bc7202dd3d14521d22c60513e2a13641",
+    "@types/node": "22.20.5",
+    "eslint": "9.39.4",
+    "prettier": "3.9.9",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.1"
+  }
+}

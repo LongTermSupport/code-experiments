@@ -2,3 +2,4 @@ vendor/
 var/
 qaConfig/
 .claude/
+node_modules/
