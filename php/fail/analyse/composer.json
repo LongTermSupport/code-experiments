@@ -1,0 +1,14 @@
+{
+  "name": "example/hello",
+  "type": "project",
+  "require": { "php": "^8.5" },
+  "require-dev": { "lts/php-qa-ci": "^85.6" },
+  "autoload": { "psr-4": { "Example\\": "src/" } },
+  "config": {
+    "allow-plugins": {
+      "lts/php-qa-ci": true,
+      "phpstan/extension-installer": true,
+      "infection/extension-installer": true
+    }
+  }
+}
