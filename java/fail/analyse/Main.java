@@ -10,7 +10,6 @@ public final class Main {
    * @param args ignored
    */
   public static void main(String[] args) {
-    int unused = 42;
-    System.out.println("Hello, world!");
+    System.out.println("Hello, world!".toUpperCase());
   }
 }
