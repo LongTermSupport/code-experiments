@@ -1,0 +1,29 @@
+name: swift
+
+on: [push, workflow_dispatch]
+
+permissions:
+  contents: read
+
+env:
+  LINUX_SOURCEKIT_LIB_PATH: /usr/local/lib
+
+jobs:
+  qa:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install pinned tools
+        run: |
+          set -euo pipefail
+          bin="$HOME/tools/bin"
+          mkdir -p "$bin"
+          curl -fsSL -o "$HOME/tools/swiftlint.zip" \
+            https://github.com/realm/SwiftLint/releases/download/0.65.1/swiftlint_linux_amd64.zip
+          unzip -q "$HOME/tools/swiftlint.zip" -d "$HOME/tools/swiftlint"
+          ln -s "$HOME/tools/swiftlint/swiftlint" "$bin/swiftlint"
+          echo "$bin" >> "$GITHUB_PATH"
+          swift --version
+          swift format --version
+          ls -la /usr/local/lib /usr/local/bin
+      - run: bash ci/run-language.bash swift
