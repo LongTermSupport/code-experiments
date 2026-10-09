@@ -1,0 +1,12 @@
+name: cpp
+on: [push, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - run: sudo apt-get update && sudo apt-get install -y cppcheck
+      - run: clang-format-18 --version && clang-tidy-18 --version && cppcheck --version
+      - run: bash ci/run-language.bash cpp

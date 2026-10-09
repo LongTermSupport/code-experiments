@@ -1,0 +1,11 @@
+name: c
+on: [push, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - run: clang-format-18 --version && clang-tidy-18 --version && gcc --version
+      - run: bash ci/run-language.bash c
