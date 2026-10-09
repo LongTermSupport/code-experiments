@@ -1,0 +1,13 @@
+name: sql
+on: [push, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  sql:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install sqlfluff
+        run: pipx install sqlfluff==4.4.0
+      - name: Prove the SQL QA
+        run: bash ci/run-language.bash sql

@@ -1,0 +1,8 @@
+---
+- name: Greet the world
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Write a greeting
+      ansible.builtin.command: echo "Hello, world"

@@ -1,0 +1,7 @@
+---
+greeting:
+  message: Hello, world
+  languages:
+    - en
+    - fr
+enabled: true
