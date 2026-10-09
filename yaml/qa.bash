@@ -19,7 +19,7 @@ echo "== prettier --check"
 npx --yes prettier@3.9.9 --check "${files[@]}"
 
 echo "== yamllint --strict"
-yamllint --strict -d '{extends: default, rules: {truthy: {check-keys: false}}}' "${files[@]}"
+yamllint --strict -f standard -d '{extends: default, rules: {truthy: {check-keys: false}}}' "${files[@]}"
 
 mapfile -t workflows < <(find ./workflows -name '*.yml' -type f 2>/dev/null | sort)
 if [[ ${#workflows[@]} -gt 0 ]]; then
