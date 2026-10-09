@@ -1,0 +1,26 @@
+name: yaml
+on: [push, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  yaml:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install yamllint and ansible-lint
+        run: |
+          set -euo pipefail
+          pipx install yamllint==1.38.0
+          pipx install ansible-lint==26.9.0
+      - name: Install actionlint
+        run: |
+          set -euo pipefail
+          mkdir -p "$HOME/.local/bin"
+          curl -fsSL -o actionlint.tar.gz \
+            https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz
+          echo "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8  actionlint.tar.gz" | sha256sum -c -
+          tar -xzf actionlint.tar.gz actionlint
+          install actionlint "$HOME/.local/bin/actionlint"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: Prove the YAML QA
+        run: bash ci/run-language.bash yaml
