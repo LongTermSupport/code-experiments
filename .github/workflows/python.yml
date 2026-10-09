@@ -1,0 +1,17 @@
+name: python
+
+on: [push, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - run: pip install ruff==0.16.10 mypy==2.4.0
+      - run: bash ci/run-language.bash python

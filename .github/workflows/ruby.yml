@@ -1,0 +1,17 @@
+name: ruby
+
+on: [push, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install the pinned gems into the runner's preinstalled Ruby
+        run: |
+          ruby --version
+          sudo gem install --no-document rubocop:1.91.0 sorbet:0.6.13544 sorbet-runtime:0.6.13544
+      - run: bash ci/run-language.bash ruby

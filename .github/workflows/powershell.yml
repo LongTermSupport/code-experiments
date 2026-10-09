@@ -1,0 +1,16 @@
+name: powershell
+
+on: [push, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - name: Pin PSScriptAnalyzer
+        shell: pwsh
+        run: Install-PSResource -Name PSScriptAnalyzer -Version 1.25.0 -TrustRepository
+      - run: bash ci/run-language.bash powershell
