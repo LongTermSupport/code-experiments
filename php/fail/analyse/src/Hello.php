@@ -8,6 +8,6 @@ final class Hello
 {
     public function greet(string $name): string
     {
-        return strlen($name);
+        return 42;
     }
 }
