@@ -11,9 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Install the pinned gems into the runner's preinstalled Ruby
-        working-directory: ruby
         run: |
           ruby --version
-          bundle config set --local path "$HOME/gems"
-          bundle install
+          sudo gem install --no-document rubocop:1.91.0 sorbet:0.6.13544 sorbet-runtime:0.6.13544
       - run: bash ci/run-language.bash ruby

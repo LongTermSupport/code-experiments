@@ -1,5 +1,5 @@
 [<EntryPoint>]
 let main _ =
-    let greet = fun name -> printfn "Hello, %s" name
-    greet "world"
+    let greet_name = "world"
+    printfn "Hello, %s" greet_name
     0
