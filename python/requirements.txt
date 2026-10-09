@@ -1,0 +1,2 @@
+# python-qa-ci v0.1.0, pinned to its commit so the tag cannot move under the checks.
+python-qa-ci @ git+https://github.com/LongTermSupport/python-qa-ci@92904b79ee4c44cb349b807d9f6bfeb83f3cbfe0

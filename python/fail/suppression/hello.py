@@ -1,5 +1,6 @@
 """Write a greeting."""
 
+import os  # ruff: ignore[F401]
 import sys
 
 
