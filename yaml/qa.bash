@@ -6,7 +6,8 @@
 #   playbooks/*.yml         ansible-lint, production profile, run from this directory
 #
 # Stops at the first failure. The yamllint config is the default one, with the key check of
-# the truthy rule off so that a workflow's `on:` key is not mistaken for a boolean.
+# the truthy rule off so that a workflow's `on:` key is not mistaken for a boolean, and one
+# space allowed before a trailing comment, as Prettier writes it.
 set -euo pipefail
 
 mapfile -t files < <(find . \( -name '*.yml' -o -name '*.yaml' \) -type f | sort)
@@ -19,7 +20,7 @@ echo "== prettier --check"
 npx --yes prettier@3.9.9 --check "${files[@]}"
 
 echo "== yamllint --strict"
-yamllint --strict -f standard -d '{extends: default, rules: {truthy: {check-keys: false}}}' "${files[@]}"
+yamllint --strict -f standard -d '{extends: default, rules: {truthy: {check-keys: false}, comments: {min-spaces-from-content: 1}}}' "${files[@]}"
 
 mapfile -t workflows < <(find ./workflows -name '*.yml' -type f 2>/dev/null | sort)
 if [[ ${#workflows[@]} -gt 0 ]]; then
