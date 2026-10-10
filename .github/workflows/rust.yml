@@ -9,4 +9,8 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - run: rustup --version && rustup toolchain install
         working-directory: rust
+      - run: bash rust/install.bash
+        env:
+          # cargo-binstall looks releases up through the GitHub API.
+          GITHUB_TOKEN: ${{ github.token }}
       - run: bash ci/run-language.bash rust
