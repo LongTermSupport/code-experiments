@@ -1,5 +1,5 @@
 # The project configuration every Python case shares: pass/ and each fail/<case>/ link to this
-# file and to qa/ beside it. The Ruff selection is python-qa's bundled one; the one difference is
+# file and to qa/ beside it. The Ruff selection is py-qa's bundled one; the one difference is
 # that print is allowed, an exception recorded in qa/record.toml.
 [tool.ruff]
 line-length = 100
