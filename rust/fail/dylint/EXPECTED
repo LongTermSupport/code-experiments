@@ -1,0 +1,2 @@
+derived `Debug` would print the contents of sensitive type `ApiToken`
+#[deny(rqaci_sensitive_debug_derive)]

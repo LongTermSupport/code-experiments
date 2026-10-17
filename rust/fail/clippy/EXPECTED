@@ -1,1 +1,2 @@
-clippy::cast_lossless
+clippy::cast-lossless
+src/main.rs:3:17

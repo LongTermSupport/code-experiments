@@ -1,0 +1,2 @@
+# rust-qa writes its bundled ast-grep pack under each package's target/.
+target/

@@ -3,3 +3,13 @@ name = "hello"
 version = "0.1.0"
 edition = "2024"
 publish = false
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+
+[workspace]
+
+[workspace.metadata.dylint]
+libraries = [
+    { git = "https://github.com/LongTermSupport/rust-qa-ci", rev = "0aca6d52abd135b83ad7b46d16d0b129553cc2c8", pattern = "lints/rqaci_lints" },
+]
