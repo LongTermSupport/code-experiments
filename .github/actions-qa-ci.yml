@@ -1,0 +1,11 @@
+version: 1
+analyse:
+  unanalysed:
+    - path: yaml/fail/analyse-workflow/workflows/**
+      justification:
+        hazard: "A fixture workflow that deliberately carries an actionlint expression error, so the YAML lane can prove it fails"
+        scope: "Only the YAML lane's failing workflow fixture, which GitHub never runs because it lies outside .github/workflows"
+    - path: yaml/pass/workflows/**
+      justification:
+        hazard: "A fixture workflow kept as data for the YAML lane's actionlint step, never as a workflow of this repository"
+        scope: "Only the YAML lane's passing workflow fixture, which GitHub never runs because it lies outside .github/workflows"
